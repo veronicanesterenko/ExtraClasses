@@ -19,10 +19,10 @@ public class TestServlet extends HttpServlet {
 
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>doGetdoPostdoPutServlet" + "</title>");
+        out.println("<title>lol" + "</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1></h1>");
+        out.println("<h1>Hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>");
         out.println();
         out.println("</body>");
         out.println("</html>");
