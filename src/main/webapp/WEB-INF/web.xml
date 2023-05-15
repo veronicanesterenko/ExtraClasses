@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <servlet>
+        <servlet-name>project</servlet-name>
+        <servlet-class>org.example.extraclasses.api.servlets.TestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>project</servlet-name>
+        <url-pattern>/welcome</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>my-servlet</servlet-name>
+        <servlet-class>org.example.extraclasses.api.servlets.MyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Servlet</servlet-name>
+        <servlet-class>org.example.extraclasses.api.servlets.ThirdServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>Servlet</servlet-name>
+        <url-pattern>/lol</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>my-servlet</servlet-name>
+        <url-pattern>/hi</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestJsp</servlet-name>
+        <jsp-file>/TestJsp.jsp</jsp-file>
+    </servlet>
+
+</web-app>

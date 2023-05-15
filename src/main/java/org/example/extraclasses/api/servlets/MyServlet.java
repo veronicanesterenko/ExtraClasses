@@ -12,6 +12,7 @@ public class MyServlet extends HttpServlet {
         PrintWriter pw = resp.getWriter();
 
         pw.println("<html>");
+        pw.println("<title>My Page</title>");
         pw.println("<h1>Hello from NIKA</h1>");
         pw.println("<html>");
     }

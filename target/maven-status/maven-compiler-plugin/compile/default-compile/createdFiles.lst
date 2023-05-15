@@ -1,2 +1,4 @@
+org\example\extraclasses\api\servlets\Servlet4.class
+org\example\extraclasses\api\servlets\ThirdServlet.class
 org\example\extraclasses\api\servlets\MyServlet.class
 org\example\extraclasses\api\servlets\TestServlet.class
