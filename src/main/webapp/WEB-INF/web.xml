@@ -36,7 +36,7 @@
 
     <servlet>
         <servlet-name>TestJsp</servlet-name>
-        <jsp-file>/TestJsp.jsp</jsp-file>
+        <jsp-file>/testJsp.jsp</jsp-file>
     </servlet>
 
 </web-app>
