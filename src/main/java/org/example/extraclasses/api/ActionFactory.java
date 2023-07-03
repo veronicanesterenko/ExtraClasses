@@ -1,6 +1,7 @@
 package org.example.extraclasses.api;
 
 import org.example.extraclasses.api.action.MainAction;
+import org.example.extraclasses.api.action.Service;
 import org.example.extraclasses.api.action.Subject;
 import org.example.extraclasses.exceptions.FactoryException;
 
@@ -18,6 +19,7 @@ public class ActionFactory {
     static {
         actions.put("/extra/main", MainAction.class);
         actions.put("/extra/subject", Subject.class);
+        actions.put("/extra/service", Service.class);
     }
 
     public static Action getAction(String uri) throws ServletException {
