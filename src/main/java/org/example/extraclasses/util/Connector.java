@@ -13,15 +13,15 @@ import java.util.logging.Logger;
 
 public class Connector {
     static Logger log = Logger.getLogger(Connector.class.getName());
-    private static String jdbsUrl;
+    private static String jdbcUrl;
     private static String user;
     private static String password;
 
-    public static void init(String jdbsDriver,String jdbsUrl, String user, String password) {
-        checkParams(jdbsDriver,jdbsUrl,user,password);
+    public static void init(String jdbcDriver,String jdbcUrl, String user, String password) {
+        checkParams(jdbcDriver,jdbcUrl,user,password);
         try {
-            Class.forName(jdbsDriver);
-            Connector.jdbsUrl = jdbsUrl;
+            Class.forName(jdbcDriver);
+            Connector.jdbcUrl = jdbcUrl;
             Connector.user = user;
             Connector.password = password;
             log.info("Driver was been loaded successfully");
@@ -33,9 +33,9 @@ public class Connector {
 
     public static Connection getConnection() {
         try {
-            return DriverManager.getConnection(jdbsUrl,user,password);
+            return DriverManager.getConnection(jdbcUrl,user,password);
         } catch (SQLException throwables) {
-           throw new GetConnectionException("Error during getting connetion: ", throwables);
+           throw new GetConnectionException("Error during getting connection: ", throwables);
         }
 
     }

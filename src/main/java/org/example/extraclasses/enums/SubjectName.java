@@ -1,9 +1,11 @@
 package org.example.extraclasses.enums;
 
-public enum Subject {
+import java.util.HashSet;
+
+public enum SubjectName {
     MATH("Math"),
     BIOLOGY("Biology"),
-    PSYCHOLOGY("Psyhology"),
+    PSYCHOLOGY("Psychology"),
     ENGLISH("English");
 
     public String getSubjName() {
@@ -12,17 +14,18 @@ public enum Subject {
 
     private final String subjName;
 
-    Subject(String subjName) {
+    SubjectName(String subjName) {
         this.subjName = subjName;
     }
 
 
-    public static Subject getByName(String name) {
-        for (Subject subject : Subject.values()) {
-            if (subject.subjName.equals(name)) {
-                return subject;
+    public static SubjectName getByName(String name) {
+        for (SubjectName subjectName : SubjectName.values()) {
+            if (subjectName.subjName.equals(name)) {
+                return subjectName;
             }
         }
         throw  new RuntimeException("no subject found with name: "+name);
     }
+
 }

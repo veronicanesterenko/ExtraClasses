@@ -8,20 +8,19 @@ import org.example.extraclasses.service.transaction.TransactionImpl;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class ServiceFactoryImpl implements ServiceFactory{
-    private  Connection connection;
+public class ServiceFactoryImpl implements ServiceFactory {
+    private Connection connection;
 
     @Override
     public Connection getConnection() throws FactoryException {
-
-        if(connection == null) {
+        if (connection == null) {
             try {
                 connection = Connector.getConnection();
             } catch (GetConnectionException e) {
-                throw  new FactoryException(e);
+                throw new FactoryException(e);
             }
         }
-                return connection;
+        return connection;
     }
 
     @Override
@@ -34,10 +33,12 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public void close() throws Exception {
         try {
-            connection.close();
-            connection = null;
+            if (connection != null) {
+                connection.close();
+                connection = null;
+            }
         } catch (SQLException e) {
-            throw new FactoryException("Error during close connection: ",e);
+            throw new FactoryException("Error during close connection: ", e);
         }
 
     }

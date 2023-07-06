@@ -1,26 +1,26 @@
 package org.example.extraclasses.entity;
 
-import org.example.extraclasses.enums.Subject;
+import org.example.extraclasses.enums.SubjectName;
 
 public class SubjectInfo {
     private long id;
-    private Subject name;
+    private SubjectName name;
     private int hoursCount;
     private String description;
     private boolean isFree;
 
-    public SubjectInfo(Subject name, int hoursCount, String description, boolean isFree) {
+    public SubjectInfo(SubjectName name, int hoursCount, String description, boolean isFree) {
         this.name = name;
         this.hoursCount = hoursCount;
         this.description = description;
         this.isFree = isFree;
     }
 
-    public Subject getName() {
+    public SubjectName getName() {
         return name;
     }
 
-    public void setName(Subject name) {
+    public void setName(SubjectName name) {
         this.name = name;
     }
 

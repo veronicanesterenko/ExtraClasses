@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface SubjectDao {
     List<SubjectInfo> findAll();
+    SubjectInfo findByName(String name);
 }
