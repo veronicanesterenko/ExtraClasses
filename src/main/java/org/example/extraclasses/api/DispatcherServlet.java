@@ -1,10 +1,12 @@
 package org.example.extraclasses.api;
 
+import org.example.extraclasses.api.action.Action;
 import org.example.extraclasses.util.Connector;
 import org.example.extraclasses.util.ServiceFactory;
 import org.example.extraclasses.util.ServiceFactoryImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 @WebServlet(value = "/")
+@MultipartConfig
 public class DispatcherServlet extends HttpServlet {
     private static final Logger log = Logger.getLogger(DispatcherServlet.class.getName());
 
@@ -34,7 +37,7 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        process(req, resp);
     }
 
     @Override
@@ -73,6 +76,7 @@ public class DispatcherServlet extends HttpServlet {
             if (Objects.nonNull(forward) && forward.getUri() != null) {
                 uri = forward.getUri();
             }
+
             request.getRequestDispatcher("/WEB-INF/jsp" + uri + ".jsp").forward(request, response);
         }
     }

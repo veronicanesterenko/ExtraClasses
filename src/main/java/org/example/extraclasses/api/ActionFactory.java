@@ -1,12 +1,11 @@
 package org.example.extraclasses.api;
 
-import org.example.extraclasses.api.action.MainAction;
-import org.example.extraclasses.api.action.Service;
-import org.example.extraclasses.api.action.Subject;
-import org.example.extraclasses.exceptions.FactoryException;
+import org.example.extraclasses.api.action.*;
+import org.example.extraclasses.service.subject.SubjectService;
 
 import javax.servlet.ServletException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -20,18 +19,24 @@ public class ActionFactory {
         actions.put("/extra/main", MainAction.class);
         actions.put("/extra/subject", Subject.class);
         actions.put("/extra/service", Service.class);
+        actions.put("/extra/service/teachers", ServiceTeachers.class);
+        actions.put("/extra/service/subjects", ServiceSubject.class);
+        actions.put("/extra/teachers/add", AddTeacher.class);
+        actions.put("/extra/teachers", TeacherPage.class);
+        actions.put("/extra/subjects/add", AddSubject.class);
     }
 
     public static Action getAction(String uri) throws ServletException {
         Class<?> action = actions.get(uri);
         if (Objects.nonNull(action)) {
             try {
+                log.info("constructor: " + Arrays.toString(action.getDeclaredConstructors()));
                 return (Action) action.getDeclaredConstructors()[0].newInstance();
             } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
                 log.severe("Error during creation action: " + e.getMessage());
                 throw new ServletException(e);
             }
         }
-        throw new ServletException("No actions fond");
+        throw new ServletException("No actions fond for: " + uri);
     }
 }

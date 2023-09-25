@@ -8,4 +8,6 @@ public interface SubjectDao {
     List<SubjectInfo> findAll();
 
     SubjectInfo findByName(String name);
+
+    SubjectInfo save(SubjectInfo subjectInfo);
 }

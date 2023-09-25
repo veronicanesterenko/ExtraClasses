@@ -1,6 +1,5 @@
 package org.example.extraclasses.api.action;
 
-import org.example.extraclasses.api.Action;
 import org.example.extraclasses.api.Forward;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +12,7 @@ public class Service extends Action {
 
     @Override
     public Forward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        log.info("Start action: " + Action.class.getName());
-
-
+        log.info("Start action: " + this.getClass().getName());
         return new Forward("/service");
     }
 }

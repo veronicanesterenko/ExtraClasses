@@ -6,8 +6,8 @@
 
     <button class="btn btn-primary lol" type="button" style="margin: 1%"
             onmouseleave="clearSize(this)"
-            onclick="location.href='/extra/service/courses'"
-            onmouseover="changeSize(this)">Courses
+            onclick="location.href='/extra/service/subjects'"
+            onmouseover="changeSize(this)">Subjects
     </button>
     <button class="btn btn-primary lol" type="button" style="margin: 1%"
             onmouseleave="clearSize(this)"

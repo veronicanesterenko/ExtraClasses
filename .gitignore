@@ -4,9 +4,11 @@ out/
 !**/src/test/**/out/
 .idea/
 
-target/
+target
 .class
 *.class
+.war
+.iml
 
 ### Eclipse ###
 

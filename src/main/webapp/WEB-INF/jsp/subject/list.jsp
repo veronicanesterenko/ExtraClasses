@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -17,10 +16,10 @@
     <c:forEach var="subj" items="${subjects}">
         <tr>
             <th scope="row">
-                   <a href="${pageContext.request.contextPath}/subject?subject_name=${subj.name}" >${subj.name}</a>
+                <a href="${pageContext.request.contextPath}/subject?subject_name=${subj.name}">${subj.name}</a>
             </th>
             <td>${subj.description}</td>
-            <td></td>
+            <td>${subj.teacher.lastName}</td>
             <td>${subj.hoursCount}</td>
             <td></td>
         </tr>

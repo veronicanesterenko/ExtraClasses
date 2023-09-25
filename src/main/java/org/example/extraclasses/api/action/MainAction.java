@@ -1,11 +1,11 @@
 package org.example.extraclasses.api.action;
 
-import org.example.extraclasses.api.Action;
 import org.example.extraclasses.api.Forward;
 import org.example.extraclasses.dao.SubjectDao;
 import org.example.extraclasses.dao.impl.SubjectDaoImpl;
 import org.example.extraclasses.entity.SubjectInfo;
-import org.example.extraclasses.enums.RequestParam;
+import org.example.extraclasses.exceptions.FactoryException;
+import org.example.extraclasses.service.subject.SubjectService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,10 +19,10 @@ public class MainAction extends Action {
     Logger log = Logger.getLogger(MainAction.class.getName());
 
     @Override
-    public Forward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public Forward execute(HttpServletRequest request, HttpServletResponse response) throws IOException, FactoryException {
         log.info("Start action: " + this.getClass().getName());
-        SubjectDao subjectDao = new SubjectDaoImpl();
-        List<SubjectInfo> subjects = subjectDao.findAll();
+        SubjectService subjectService = getServiceFactory().getSubjectService();
+        List<SubjectInfo> subjects = subjectService.getAll();
         request.setAttribute(SUBJECTS.val(), subjects);
         return new Forward("/main");
     }
