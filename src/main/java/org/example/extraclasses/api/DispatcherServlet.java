@@ -1,11 +1,13 @@
 package org.example.extraclasses.api;
 
+import org.example.extraclasses.api.action.Action;
 import org.example.extraclasses.exception.FactoryException;
 import org.example.extraclasses.util.Connector;
 import org.example.extraclasses.util.ServiceFactory;
 import org.example.extraclasses.util.ServiceFactoryImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 @WebServlet(value = "/")
+@MultipartConfig
 public class DispatcherServlet extends HttpServlet {
     private static final Logger log = Logger.getLogger(DispatcherServlet.class.getName());
 
@@ -39,7 +42,11 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        try {
+            process(req, resp);
+        } catch (FactoryException e) {
+            log.warning(e.toString());
+        }
     }
 
     @Override
@@ -55,16 +62,16 @@ public class DispatcherServlet extends HttpServlet {
     private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, FactoryException, IOException {
         log.info("Start process, uri: " + request);
         log.info("Start process, uri: " + request.getRequestURL());
+
         String uri = request.getRequestURI();
         String context = request.getContextPath();
-
+        log.info("this is URI    :" + uri);
+        log.info("this is Context PATH     :" + context);
         Action action = ActionFactory.getAction(uri);
         Forward forward;
         try (ServiceFactory factory = getServiceFactory()) {
             action.setServiceFactory(factory);
             forward = action.execute(request, response);
-
-
         } catch (Exception e) {
             log.severe("oops" + Arrays.toString(e.getStackTrace()));
             throw new ServletException(e);
@@ -74,15 +81,18 @@ public class DispatcherServlet extends HttpServlet {
         if (Objects.nonNull(forward) && forward.isRedirect()) {
             response.sendRedirect(context + forward.getUri());
             log.info("uri before 2 "+uri);
+            return;
         } else {
             if (Objects.nonNull(forward) && forward.getUri() != null) {
                 uri = forward.getUri();
                 log.info("uri"+uri);
+                log.info("request"+request);
             }
         }
 
         log.info("forward:" + forward);
         request.getRequestDispatcher("/WEB-INF/jsp/" + uri + ".jsp").forward(request, response);
+        log.info("response"+response);
     }
 
 

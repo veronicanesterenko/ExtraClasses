@@ -1,19 +1,13 @@
 package org.example.extraclasses.service.subject;
 
-
-import org.example.extraclasses.dao.SubjectDao;
 import org.example.extraclasses.entity.SubjectInfo;
+import org.example.extraclasses.entity.User;
 
 import java.util.List;
 
-public class SubjectService {
-    private final SubjectDao subjectDao;
-
-    public SubjectService(SubjectDao subjectDao) {
-        this.subjectDao = subjectDao;
-    }
-
-    public List<SubjectInfo> getAll() {
-        return subjectDao.findAll();
-    }
+public interface SubjectService {
+    List<SubjectInfo> getAll();
+    SubjectInfo saveSubject(SubjectInfo newSubject);
+    void updateSubject(String changedName, String changedDesc, String subjectId);
+    SubjectInfo findByName(String name);
 }

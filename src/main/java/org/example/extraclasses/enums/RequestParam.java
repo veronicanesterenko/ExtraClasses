@@ -5,7 +5,9 @@ public enum RequestParam {
     SUBJECT_NAME("subject_name"),
     ERROR_MESSAGE("error_message"),
     SUBJECTS("subjects"),
-    SUBJECT("subject");
+    SUBJECT("subject"),
+    TEACHERS("teachers"),
+    TEACHER("teacher");
 
     private final String param;
     RequestParam(String param) {

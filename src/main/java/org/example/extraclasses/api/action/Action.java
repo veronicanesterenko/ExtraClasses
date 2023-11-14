@@ -1,5 +1,8 @@
-package org.example.extraclasses.api;
+package org.example.extraclasses.api.action;
 
+import org.example.extraclasses.api.Forward;
+import org.example.extraclasses.exception.FactoryException;
+import org.example.extraclasses.exception.TransactionException;
 import org.example.extraclasses.util.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +20,7 @@ public abstract class Action {
         this.serviceFactory = serviceFactory;
     }
 
-    public abstract Forward execute(HttpServletRequest request, HttpServletResponse response) throws IOException;
+    public abstract Forward execute(HttpServletRequest request, HttpServletResponse response) throws IOException, FactoryException, TransactionException;
 
 
 }

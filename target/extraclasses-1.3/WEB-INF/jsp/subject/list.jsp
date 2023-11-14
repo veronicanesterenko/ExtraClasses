@@ -17,14 +17,14 @@
         </tr>
         </thead>
         <tbody>
-<c:forEach  var= "subj" items="${subjects}">
+<c:forEach  var= "subj"  items="${subjects}">
 
     <tr>
         <th scope="row">
             <a href="${pageContext.request.contextPath}/subject?subject_name=${subj.name}" > ${subj.name}</a>
-    </th>
+        </th>
         <td>${subj.description}</td>
-        <td></td>
+        <td>${subj.teacher.firstName} ${subj.teacher.lastName}</td>
         <td>${subj.hoursCount}</td>
         <td></td>
     </tr>
