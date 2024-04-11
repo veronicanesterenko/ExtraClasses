@@ -48,4 +48,7 @@ public class SubjectServiceImpl extends EnableTransaction implements SubjectServ
     public SubjectInfo findByName(String name) {
         return subjectDao.findByName(name);
     }
+    public SubjectInfo saveStudentForSubject(SubjectInfo subjectInfo, User student) {
+        return subjectDao.saveStudentForSubject(subjectInfo,student);
+    }
 }

@@ -17,11 +17,11 @@ public class ServiceStudents extends Action {
     public Forward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         log.info("Start action: "+ Action.class.getName());
         UserDao userDao = getServiceFactory().getUserDao();
-        List<User> teachers = userDao.getAllByRole(Role.TEACHER);
-        request.setAttribute("teachers",teachers);
-        log.info("\n\n\nfound teachers\n\n\n\n\n");
-        teachers.forEach(teacher->log.info(teacher.toString()));
-        log.info("\n\n\nend teachers\n\n\n\n\n");
+        List<User> students = userDao.getAllByRole(Role.STUDENT);
+        request.setAttribute("students",students);
+        log.info("\n\n\nfound students\n\n\n\n\n");
+        students.forEach(student->log.info(student.toString()));
+        log.info("\n\n\nend students\n\n\n\n\n");
 
 
         return new Forward("/service/students");

@@ -7,7 +7,9 @@ public enum RequestParam {
     SUBJECTS("subjects"),
     SUBJECT("subject"),
     TEACHERS("teachers"),
-    TEACHER("teacher");
+    TEACHER("teacher"),
+    STUDENTS("students"),
+    STUDENT("student");
 
     private final String param;
     RequestParam(String param) {

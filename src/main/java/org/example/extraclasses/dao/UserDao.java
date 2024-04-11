@@ -13,4 +13,6 @@ public interface UserDao {
 
     User findById(String id);
     Integer getTeacherIdBySubjectId(long id);
+
+    List<User> getStudentListBySubjectId(long id);
 }

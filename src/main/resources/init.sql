@@ -1,10 +1,8 @@
 DROP
 DATABASE IF EXISTS `extra`;
-CREATE
-DATABASE `extra` DEFAULT CHARACTER SET utf8;
+CREATE DATABASE `extra` DEFAULT CHARACTER SET utf8;
 
-USE
-`extra`;
+USE `extra`;
 CREATE TABLE `subject`
 (
     `subject_id`  INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,6 +12,12 @@ CREATE TABLE `subject`
     `free`        BOOLEAN       NOT NULL,
     CONSTRAINT name_length CHECK (LENGTH(name) > 2)
 );
+
+insert into `extra`.`subject` (`name`,
+                               `description`,
+                               `hours`,
+                               `free`)
+                            values ('math','ldkfja;slkdjf', 100, true);
 CREATE TABLE `teacher`
 (
     `teacher_id` INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -80,5 +84,16 @@ create table if not exists subjects_teachers
     foreign key (subject_id) references subject(subject_id),
     foreign key (teacher_id) references user(id),
     primary key (subject_id,teacher_id)
+
+    );
+
+create table if not exists subjects_students
+(
+    id int not null unique auto_increment,
+    subject_id int not null,
+    student_id int not null,
+    foreign key (subject_id) references subject(subject_id),
+    foreign key (student_id) references user(id),
+    primary key (subject_id,student_id)
 
     );

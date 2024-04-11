@@ -8,5 +8,5 @@
 <jsp:include page="components/subject.jsp"/>
 <jsp:include page="components/teacher_card.jsp"/>
 <jsp:include page="components/edit_subject.jsp"/>
-
+<jsp:include page="components/students_list.jsp"/>
 <jsp:include page="footer.jsp"/>

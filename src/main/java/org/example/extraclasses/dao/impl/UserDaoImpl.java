@@ -138,4 +138,45 @@ public class UserDaoImpl extends EnableConnection implements UserDao, Loggable {
          }
         return userId;
     }
+
+    @Override
+    public List<User> getStudentListBySubjectId(long id) {
+        List<User> students = new ArrayList<>();
+        User user;
+        Connection connection = getConnection();
+        String sql = "select * from user u " +
+                "join subjects_students ss on u.id = ss.student_id " +
+                "where ss.subject_id = ?";
+        // String sql = "select  teacher_id from  subjects_teachers where subject_id = ?";
+        Integer userId = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+                throw new UserDaoException("There are not teacher on subject" + id);
+            }
+            while (resultSet.next()) {
+                user = new User();
+                log.info("user_id: "+resultSet.getLong(1));
+                user.setId(resultSet.getLong(1));
+
+                log.info("first_name: "+resultSet.getString(2));
+                user.setFirstName(resultSet.getString(2));
+
+                log.info("last_name: "+resultSet.getString(3));
+                user.setLastName(resultSet.getString(3));
+
+                log.info("username: "+resultSet.getString(4));
+                user.setLogin(resultSet.getString(4));
+
+                students.add(user);
+            }
+
+            log.info("lIST of STUDENTS" + students);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return students;
+    }
 }

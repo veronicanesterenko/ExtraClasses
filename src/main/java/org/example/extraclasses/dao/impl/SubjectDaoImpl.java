@@ -139,6 +139,28 @@ public class SubjectDaoImpl extends EnableConnection implements SubjectDao, Logg
         return subjectInfo;
     }
 
+    public SubjectInfo saveStudentForSubject(SubjectInfo subjectInfo, User student) {
+      //  log.info("start saving student for subject" + subjectInfo.getTeacher().getId());
+        try {
+
+            Connection connection = getConnection();
+            String sql = "insert into `subjects_students`(subject_id,student_id)" +
+                    "values (?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setLong(1, subjectInfo.getId());
+            preparedStatement.setLong(2, student.getId());
+
+
+            int count = preparedStatement.executeUpdate();
+            log.info(count+"rows affected");
+
+
+        } catch (SQLException throwables) {
+            throw  new UserDaoException("error during save student for subject", throwables);
+        }
+        return subjectInfo;
+    }
+
     @Override
     public void updateTeacherForSubject(String teacherId, String subjectId) {
         log.info("start update teacher for subject. teacherId: " + teacherId + "subjectId: "+subjectId);

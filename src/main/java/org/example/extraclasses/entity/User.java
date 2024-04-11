@@ -11,8 +11,7 @@ public class User {
     Role role;
     String photoBase64;
 
-    public User() {
-    }
+    public User() {}
 
     public User(String firstName, String lastName, String login, byte[] photo, Role role) {
         this.firstName = firstName;
@@ -21,6 +20,8 @@ public class User {
         this.photo = photo;
         this.role = role;
     }
+
+
 
     public long getId() {
         return id;

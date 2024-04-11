@@ -7,4 +7,5 @@
 
 <jsp:include page="list.jsp"/>
 <jsp:include page="../components/modal_subject.jsp"/>
+
 <jsp:include page="../footer.jsp"/>

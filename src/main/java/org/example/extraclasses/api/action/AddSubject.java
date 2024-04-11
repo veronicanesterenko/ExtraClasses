@@ -47,14 +47,11 @@ public class AddSubject extends Action implements Loggable {
             User teacher = new User();
             teacher.setId(Long.parseLong(teacher_id));
 
-
-
-
             SubjectInfo subjectInfo = new SubjectInfo(name, hoursCount, description, isFree, teacher, null);
             subjectService.saveSubject(subjectInfo);
             transaction.commit();
 
-            return new Forward("/subject/subjects");
+            return new Forward("/subject/subjects",true);
         } catch (TransactionException e) {
             String msg = String.format("ERROR during add subject: %s, %s", e.getMessage(), Arrays.toString(e.getStackTrace()));
             log.severe(msg);

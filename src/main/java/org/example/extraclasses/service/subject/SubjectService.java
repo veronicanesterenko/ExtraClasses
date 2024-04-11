@@ -10,4 +10,5 @@ public interface SubjectService {
     SubjectInfo saveSubject(SubjectInfo newSubject);
     void updateSubject(String changedName, String changedDesc, String subjectId);
     SubjectInfo findByName(String name);
+    SubjectInfo saveStudentForSubject(SubjectInfo subjectInfo, User student);
 }

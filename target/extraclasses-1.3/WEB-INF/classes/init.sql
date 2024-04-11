@@ -82,3 +82,14 @@ create table if not exists subjects_teachers
     primary key (subject_id,teacher_id)
 
     );
+
+create table if not exists subjects_students
+(
+    id int not null unique auto_increment,
+    subject_id int not null,
+    student_id int not null,
+    foreign key (subject_id) references subject(subject_id),
+    foreign key (student_id) references user(id),
+    primary key (subject_id,student_id)
+
+    );

@@ -16,9 +16,12 @@ public class ActionFactory implements Loggable {
     private final Logger log = getLogger();
 
     static {
+        actions.put("/extra/login", Login.class);
+        actions.put("/login", Login.class);
+        actions.put("/extra/check-login", CheckLogin.class);
         actions.put("/extra/main", MainAction.class);
         actions.put("/extra/service/teachers", ServiceTeachers.class);
-        actions.put("/extra/service/teachers/add", AddTeacher.class);
+        actions.put("/extra/users/add", AddUser.class);
         actions.put("/extra/service/students", ServiceStudents.class);
         actions.put("/extra/subject", Subject.class);
         actions.put("/extra/service", Service.class);
@@ -27,6 +30,8 @@ public class ActionFactory implements Loggable {
         actions.put("/extra/service/subjects", ServiceSubject.class);
         actions.put("/extra/change-teacher", ChangeTeacher.class);
         actions.put("/extra/edit-description", EditDescription.class);
+        actions.put("/extra/students", StudentPage.class);
+        actions.put("/extra/add-student", AddStudentForSubject.class);
 
     }
 

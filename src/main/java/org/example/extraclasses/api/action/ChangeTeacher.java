@@ -24,9 +24,6 @@ public class ChangeTeacher extends Action implements Loggable {
     @Override
     public Forward execute(HttpServletRequest request, HttpServletResponse response) throws IOException, FactoryException, TransactionException {
         final Logger logger = getLogger();
-        /*ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-        final String s = mapper.writeValueAsString(request);*/
         final String subjectId = request.getParameter("subject");
         final String teacherId = request.getParameter("teacher");
         final String subject_name = request.getParameter("subject_name");

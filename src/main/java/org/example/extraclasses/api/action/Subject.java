@@ -35,6 +35,8 @@ public class Subject extends Action {
         log.info("Teacher"+ teacher);
 
         List<User> listOfTeachers = userDao.getAllByRole(Role.TEACHER);
+        List<User> listOfStudents = userDao.getAllByRole(Role.STUDENT);
+
 
 
         if(subject==null) {
@@ -45,6 +47,7 @@ public class Subject extends Action {
         request.setAttribute(SUBJECT_NAME.val(),subject);
         request.setAttribute(TEACHER.val(), teacher);
         request.setAttribute(TEACHERS.val(), listOfTeachers);
+        request.setAttribute(STUDENTS.val(), listOfStudents);
         return new Forward("/subject");
 
     }
